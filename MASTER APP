@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Master Binder Hub</title>
+    <!-- iOS Cross-Platform PWA Side-Loading Metadata Hooks -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MB Hub">
+    
+    <style>
+        /* --- CORE VISUAL DESIGN ACCOMMODATIONS --- */
+        :root {
+            --denim-bg: #111827;        /* Glare-Absorbing Dark Indigo Core */
+            --slate-panel: #1f2937;    /* Low-Saturation Lightened Slate Blue Panel */
+            --text-main: #f9fafb;       /* High-Contrast Clear Text Layer */
+            --rainbow-border: #374151;  /* Muted Accent Guides */
+            --rainbow-red: #dc2626;     /* Soft Deep Rainbow Grids */
+            --rainbow-yellow: #d97706;
+            --rainbow-green: #059669;
+            --rainbow-blue: #2563eb;
+        }
+
+        /* Fluid Layout Grid Scales Automatically for Mobile, Tablet, and PC Desktop Formats */
+        body {
+            background-color: var(--denim-bg);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* --- THE PERMANENT FIXED OMNI CORES --- */
+        .omni-panel {
+            background-color: var(--slate-panel);
+            border: 3px solid var(--rainbow-blue);
+            border-radius: 12px;
+            padding: 14px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+        }
+
+        .omni-header {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Massive Pill Button Grid Optimization for Touchscreens & Low-Vision Needs */
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .action-pill {
+            background-color: #374151;
+            border: 2px solid transparent;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .action-pill:active {
+            transform: scale(0.96);
+            background-color: var(--rainbow-green);
+        }
+
+        /* --- 20-CHAPTER DIRECT BOOK NAVIGATION VAULT --- */
+        .chapter-dock {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            background: #030712;
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        .chapter-key {
+            background: var(--slate-panel);
+            border: 1px solid var(--rainbow-border);
+            border-radius: 6px;
+            padding: 8px 4px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* --- THE INTUITIVE QUICK CAPTURE SLATE --- */
+        .capture-slate {
+            background-color: var(--slate-panel);
+            border-radius: 12px;
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 2px solid var(--rainbow-border);
+        }
+
+        .slate-input {
+            width: 100%;
+            height: 90px;
+            background-color: #030712;
+            border: 2px solid var(--rainbow-border);
+            border-radius: 8px;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            resize: none;
+        }
+
+        /* --- ADMIN SWITCHBOARD ACCESS MATRIX --- */
+        .admin-box {
+            background-color: #030712;
+            border: 2px solid var(--rainbow-red);
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* --- STABLE VIEW CARDS --- */
+        .workspace-view {
+            width: 100%;
+            min-height: 180px;
+            border: 2px dashed var(--rainbow-border);
+            border-radius: 12px;
+            padding: 14px;
+            box-sizing: border-box;
+            overflow-y: auto; /* Continuous Vertical Scroll Default */
+        }
+
+        .footer-note {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            border-top: 1px solid var(--rainbow-border);
+            padding-top: 8px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Permanent Fixed App Interface Overlay -->
+        <div class="omni-panel">
+            <div class="omni-header">
+                <span>🎛️ MASTER CONTROL CORE</span>
+                <span id="engine-status" style="color: var(--rainbow-green); font-size: 0.85rem;">● AI ACTIVE</span>
+            </div>
+            
+            <div class="pill-grid">
+                <button class="action-pill" onclick="runShort('y')">y: Save & Lock</button>
+                <button class="action-pill" onclick="runShort('n')">n: Trash</button>
+                <button class="action-pill" onclick="runShort('t')">t: Rewrite</button>
+                <button class="action-pill" onclick="runShort('g')">g: Guide</button>
+                <button class="action-pill" onclick="runShort('q')">q: Expand</button>
+                <button class="action-pill" onclick="runShort('d')" style="border-color: var(--rainbow-yellow);">d: Rescue/Undo</button>
+            </div>
+
+            <!-- 20 Chapter Quick-Jump Links -->
+            <div class="chapter-dock">
+                <div class="chapter-key" onclick="runJump(1)">c1 🍳</div>
+                <div class="chapter-key" onclick="runJump(2)">c2 🪵</div>
+                <div class="chapter-key" onclick="runJump(11)">c11 📲</div>
+                <div class="chapter-key" onclick="runJump(12)">c12 🏡</div>
+                <div class="chapter-key" onclick="runJump(13)">c13 🏫</div>
+                <div class="chapter-key" onclick="runJump(18)">c18 🩸</div>
+            </div>
+        </div>
+
+        <!-- Sovereign Admin Toggle Switchboard (Owner Exclusive) -->
+        <div class="admin-box" id="admin-panel">
+            <strong style="color: var(--rainbow-red);">🔒 SOVEREIGN ADMINISTRATION PLATFORM DESK</strong>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.9rem;">
+                <span>Global System AI Engine:</span>
+                <button class="action-pill" style="background-color: var(--rainbow-blue); padding: 6px 12px;" onclick="swapEngine()">Toggle Override</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; border-top: 1px solid #1f2937; padding-top: 6px;">
+                <span>Michael Access Level:</span>
+                <button class="action-pill" style="padding: 4px 10px; font-size: 0.75rem;" id="user-m" onclick="swapUser('m')">COMMERCIAL STYLE</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+                <span>Kate Access Level:</span>
+                <button class="action-pill" style="padding: 4px 10px; font-size: 0.75rem;" id="user-k" onclick="swapUser('k')">COMMERCIAL STYLE</button>
+            </div>
+        </div>
+
+        <!-- Quick Capture Slate (With Scaled Pinterest Share-Sheet Simulation Link) -->
+        <div class="capture-slate">
+            <strong>📝 QUICK ENTRY CAPTURE SLATE</strong>
+            <textarea class="slate-input" id="box-input" placeholder="Tap your mobile mic button to dictate notes, or drop incoming external homeschool share links here..."></textarea>
+            <div class="pill-grid">
+                <button class="action-pill" style="background-color: var(--rainbow-green);" onclick="processEntry('stash')">Stash Pass</button>
+                <button class="action-pill" style="background-color: var(--rainbow-blue);" onclick="processEntry('c13')">Send to c13 Curriculum</button>
+            </div>
+        </div>
+
+        <!-- Stable Reading Canvas Workspace -->
+        <div class="workspace-view" id="display-canvas">
+            <h3>📖 SYSTEM LOG REPOSITORY</h3>
+            <div id="text-canvas">Ecosystem runtime standardized successfully. App configuration files are locked. Your dark denim glare-reduction views are fully operational.</div>
+            
+            <div class="footer-note" id="fact-banner">
+                <strong>⚠️ General Reminder:</strong> Always verify key data points and do your own independent research before making final household or business decisions. Both algorithmic automation engines and human creators can make mistakes, overlook details, or introduce errors. Protect your workflow by checking primary sources directly.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- --- COMPACT APPLICATION RUNTIME INTERPRETER (LOCAL-ONLY CACHING) --- -->
+    <script>
+        let aiMode = true;
+        let users = { m: "COMMERCIAL", k: "COMMERCIAL" };
+
+        // Dual-Engine Override: Swaps between conversational AI processing and zero-AI logic loops
+        function swapEngine() {
+            aiMode = !aiMode;
